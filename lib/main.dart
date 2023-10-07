@@ -11,9 +11,10 @@ class MayApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
+      theme: ThemeData(useMaterial3: true,colorSchemeSeed: Colors.cyan),
       debugShowCheckedModeBanner: false,
-      home: Counter(),
-    );
+      home: const Counter(),
+    ); 
   }
 }
