@@ -8,23 +8,42 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
+  int clickCounter = 0;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '10',
-              style: TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
+              '$clickCounter',
+              style:
+                  const TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
             ),
-            Text('Clicks', style: TextStyle(fontSize: 60))
+            const Text('Clicks', style: TextStyle(fontSize: 60))
           ],
         ),
       ),
-      floatingActionButton:
-          FloatingActionButton(onPressed: null, child: Icon(Icons.plus_one)),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+        FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              clickCounter += 1; //Icons.exposure_minus_1
+            });
+          },
+          child: const Icon(Icons.plus_one)),
+          const SizedBox(height: 18),
+           FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              clickCounter -= 1; //Icons.exposure_minus_1
+            });
+          },
+          child: const Icon(Icons.exposure_minus_1)),
+      ],)
     );
   }
 }
